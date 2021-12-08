@@ -1,30 +1,38 @@
-import logo from './logo.svg';
 import './App.css';
 import { getPokemon } from './services/pokemon';
 import { useEffect, useState } from 'react';
 import PokeList from './Components/PokeList/PokeList';
+import Controls from './Components/Controls/Controls';
 
 function App() {
-  const [pokemon, setPokemon] = useState('');
+  const [pokemon, setPokemon] = useState([]);
   const [loading, setLoading] = useState(true);
   const [query, setQuery] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getPokemon(query)
+      const data = await getPokemon(query);
       setPokemon(data.results);
-      setTimeout(() => {
-        setLoading(false);
-      } 2000);
-    })
+      setLoading(false);
+      console.log(data);
     };
-    fetchData();
-  }, [loading]);
-  return () => {
-    <div className="app">
-      <PokeList pokemon={pokemon}/>
-    </div>;
-  };
+    if (loading) {
+      fetchData();
+    }
+  }, [loading, query]);
+
+  return (
+    <div className="App">
+      <h1>Pokedex</h1>
+      {loading && <span className="load"></span>}
+      {!loading && (
+        <>
+          <Controls query={query} setQuery={setQuery} setLoading={setLoading} />
+          <PokeList pokemon={pokemon} />
+        </>
+      )}
+    </div>
+  );
 }
 
 export default App;
