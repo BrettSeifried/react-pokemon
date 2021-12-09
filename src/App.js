@@ -32,7 +32,7 @@ function App() {
             query={query}
             setQuery={setQuery}
             setLoading={setLoading}
-            // order={order}
+            order={order}
             setPokemon={setPokemon}
             setOrder={setOrder}
           />
