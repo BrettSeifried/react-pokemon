@@ -8,27 +8,35 @@ function App() {
   const [pokemon, setPokemon] = useState([]);
   const [loading, setLoading] = useState(true);
   const [query, setQuery] = useState('');
+  const [order, setOrder] = useState('asc');
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getPokemon(query);
+      const data = await getPokemon(query, order, page);
       setPokemon(data.results);
       setLoading(false);
-      console.log(data);
     };
     if (loading) {
       fetchData();
     }
-  }, [loading, query]);
+  }, [loading, query, order, page]);
 
   return (
     <div className="App">
       <h1>Pokedex</h1>
-      {loading && <span className="load"></span>}
+      {loading && <span className="loader"></span>}
       {!loading && (
         <>
-          <Controls query={query} setQuery={setQuery} setLoading={setLoading} />
-          <PokeList pokemon={pokemon} />
+          <Controls
+            query={query}
+            setQuery={setQuery}
+            setLoading={setLoading}
+            // order={order}
+            setPokemon={setPokemon}
+            setOrder={setOrder}
+          />
+          <PokeList pokemon={pokemon} setPage={setPage} setLoading={setLoading} />
         </>
       )}
     </div>
