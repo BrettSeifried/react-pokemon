@@ -1,5 +1,5 @@
 import './App.css';
-import { getPokemon } from './services/pokemon';
+import { getPokemon, getType } from './services/pokemon';
 import { useEffect, useState } from 'react';
 import PokeList from './Components/PokeList/PokeList';
 import Controls from './Components/Controls/Controls';
@@ -10,10 +10,12 @@ function App() {
   const [query, setQuery] = useState('');
   const [order, setOrder] = useState('asc');
   const [page, setPage] = useState(1);
+  const [types, setType] = useState([]);
+  const [selectedType, setSelectedType] = useState('All');
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getPokemon(query, order, page);
+      const data = await getPokemon(query, order, page, selectedType);
       setPokemon(data.results);
       setLoading(false);
     };
@@ -21,6 +23,14 @@ function App() {
       fetchData();
     }
   }, [loading, query, order, page]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getType();
+      setType(data);
+    };
+    fetchData();
+  }, []);
 
   return (
     <div className="App">
@@ -33,8 +43,12 @@ function App() {
             setQuery={setQuery}
             setLoading={setLoading}
             order={order}
-            setPokemon={setPokemon}
+            // setPokemon={setPokemon}
             setOrder={setOrder}
+            types={types}
+            // setType={setType}
+            selectedType={selectedType}
+            setSelectedType={setSelectedType}
           />
           <PokeList pokemon={pokemon} setPage={setPage} setLoading={setLoading} />
         </>
