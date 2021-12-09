@@ -1,4 +1,5 @@
 import React from 'react';
+import './PokeList.css';
 
 export default function PokeList({ pokemon, setLoading, setPage }) {
   const handleClick = () => {
@@ -7,11 +8,11 @@ export default function PokeList({ pokemon, setLoading, setPage }) {
   };
 
   return (
-    <div className="table">
-      <div>
-        <button className="nextPage" onClick={handleClick}>
-          Next
-        </button>
+    <div>
+      {/* <button className="nextPage" onClick={handleClick}>
+        Next
+      </button> */}
+      <div className="table">
         {pokemon.map((poke) => (
           <p key={poke.id} className="pokeCard">
             <img alt={poke.id} src={poke.url_image} />
@@ -22,10 +23,10 @@ export default function PokeList({ pokemon, setLoading, setPage }) {
             <span>Type: {poke.type_1}</span>
           </p>
         ))}
-        <button className="next" onClick={handleClick}>
-          Next Page
-        </button>
       </div>
+      <button className="nextPage" onClick={handleClick}>
+        Next Page
+      </button>
     </div>
   );
 }
