@@ -1,5 +1,9 @@
 .App {
   text-align: center;
+  background-image: url('./jigglypuff.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: rgb(255, 203, 211);
 }
 
 .App-logo {

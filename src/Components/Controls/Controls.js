@@ -1,4 +1,6 @@
 import React from 'react';
+import { Button, TextField, Select, MenuItem } from '@mui/material';
+import './controls.css';
 
 export default function Controls({
   query,
@@ -11,8 +13,9 @@ export default function Controls({
   selectedType,
 }) {
   return (
-    <div>
-      <input
+    <div className="working">
+      <TextField
+        style={{ backgroundColor: 'teal', color: 'white' }}
         type="text"
         placeholder="type a name"
         value={query}
@@ -20,38 +23,31 @@ export default function Controls({
           setQuery(e.target.value);
         }}
       />
-      <select value={order} onChange={(e) => setOrder(e.target.value)}>
-        <option value="asc">Ascending</option>
-        <option value="desc">Descending</option>
-      </select>
-      <select value={selectedType} onChange={(e) => setSelectedType(e.target.value)}>
-        <option value="">All</option>
+      <Select
+        style={{ backgroundColor: 'teal', color: 'white' }}
+        value={order}
+        onChange={(e) => setOrder(e.target.value)}
+      >
+        <MenuItem value="asc">Ascending</MenuItem>
+        <MenuItem value="desc">Descending</MenuItem>
+      </Select>
+      <Select
+        style={{ backgroundColor: 'teal', color: 'white' }}
+        value={selectedType}
+        onChange={(e) => setSelectedType(e.target.value)}
+      >
+        <MenuItem className="working" value="All">
+          All
+        </MenuItem>
         {types.map((type) => (
-          <option key={type} value={type}>
+          <MenuItem key={type} value={type}>
             {type}
-          </option>
+          </MenuItem>
         ))}
-        {/* <option value="all">All</option>
-        <option value="Bug">Bug</option>
-        <option value="Fairy">Fairy</option>
-        <option value="Ghost">Ghost</option>
-        <option value="Normal">Normal</option>
-        <option value="Steel">Steel</option>
-        <option value="Dark">Dark</option>
-        <option value="Fighting">Fighting</option>
-        <option value="Grass">Grass</option>
-        <option value="Poison">Poison</option>
-        <option value="Water">Water</option>
-        <option value="Dragon">Dragon</option>
-        <option value="Fire">Fire</option>
-        <option value="Ground">Ground</option>
-        <option value="Psychic">Psychic</option>
-        <option value="Electric">Electric</option>
-        <option value="Flying">Flying</option>
-        <option value="Ice">Ice</option>
-        <option value="Rock">Rock</option> */}
-      </select>
-      <button onClick={() => setLoading(true)}>Find Pokemon</button>
+      </Select>
+      <Button style={{ backgroundColor: 'teal', color: 'white' }} onClick={() => setLoading(true)}>
+        Find Pokemon
+      </Button>
     </div>
   );
 }

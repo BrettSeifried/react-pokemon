@@ -22,6 +22,7 @@
   align-items: center;
   border: black 2px solid;
   flex-wrap: wrap;
+  border-radius: 5%;
 }
 
 img {

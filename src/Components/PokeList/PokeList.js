@@ -1,5 +1,6 @@
 import React from 'react';
 import './PokeList.css';
+import { Button } from '@mui/material';
 
 export default function PokeList({ pokemon, setLoading, setPage }) {
   const handleClick = () => {
@@ -16,7 +17,7 @@ export default function PokeList({ pokemon, setLoading, setPage }) {
         {pokemon.map((poke) => (
           <p key={poke.id} className="pokeCard">
             <img alt={poke.id} src={poke.url_image} />
-            <span>name: {poke.pokemon}</span>
+            <span>{poke.pokemon.charAt(0).toUpperCase() + poke.pokemon.slice(1)}</span>
             <span>HP: {poke.hp}</span>
             <span>Attack: {poke.attack}</span>
             <span>Defense: {poke.attack}</span>
@@ -24,9 +25,13 @@ export default function PokeList({ pokemon, setLoading, setPage }) {
           </p>
         ))}
       </div>
-      <button className="nextPage" onClick={handleClick}>
+      <Button
+        style={{ backgroundColor: 'teal', color: 'white' }}
+        className="nextPage"
+        onClick={handleClick}
+      >
         Next Page
-      </button>
+      </Button>
     </div>
   );
 }
