@@ -22,7 +22,7 @@ function App() {
     if (loading) {
       fetchData();
     }
-  }, [loading, query, order, page]);
+  }, [loading, query, order, page, selectedType]);
 
   useEffect(() => {
     const fetchData = async () => {
