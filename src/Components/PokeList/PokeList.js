@@ -17,7 +17,7 @@ export default function PokeList({ pokemon, setLoading, setPage }) {
         {pokemon.map((poke) => (
           <p key={poke.id} className="pokeCard">
             <img alt={poke.id} src={poke.url_image} />
-            <span>{poke.pokemon.charAt(0).toUpperCase() + poke.pokemon.slice(1)}</span>
+            <span className="nameUpper">{poke.pokemon}</span>
             <span>HP: {poke.hp}</span>
             <span>Attack: {poke.attack}</span>
             <span>Defense: {poke.attack}</span>
