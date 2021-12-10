@@ -16,8 +16,8 @@ export default function PokeList({ pokemon, setLoading, setPage }) {
       <div className="table">
         {pokemon.map((poke) => (
           <p key={poke.id} className="pokeCard">
-            <img alt={poke.id} src={poke.url_image} />
             <span className="nameUpper">{poke.pokemon}</span>
+            <img alt={poke.id} src={poke.url_image} />
             <span>HP: {poke.hp}</span>
             <span>Attack: {poke.attack}</span>
             <span>Defense: {poke.attack}</span>
