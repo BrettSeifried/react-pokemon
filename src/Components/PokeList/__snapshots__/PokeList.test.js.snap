@@ -12,10 +12,10 @@ Object {
           <p
             class="pokeCard"
           >
-            <img />
             <span
               class="nameUpper"
             />
+            <img />
             <span>
               HP: 
             </span>
@@ -52,10 +52,10 @@ Object {
         <p
           class="pokeCard"
         >
-          <img />
           <span
             class="nameUpper"
           />
+          <img />
           <span>
             HP: 
           </span>
